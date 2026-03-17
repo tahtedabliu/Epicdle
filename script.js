@@ -1,18 +1,31 @@
 const personagens=[
 
-{nome:"Odysseus",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei de Ítaca",saga:"Troy Saga",imagem:"imagens/odysseus.png"},
-{nome:"Polites",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Marinheiro leal",saga:"Troy Saga",imagem:"imagens/polites.png"},
+{nome:"Odysseus",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei, Warrior of the Mind, Monster, Just a Man",saga:"Troy Saga",imagem:"imagens/odysseus.png"},
+{nome:"Diomedes",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei, Warrior of the Mind",saga:"Troy Saga",imagem:"imagens/diomedes.png"},
+{nome:"Menelau",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei",saga:"Troy Saga",imagem:"imagens/menelau.png"},
+{nome:"Agamenon",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Rei, general",saga:"Troy Saga",imagem:"imagens/agamenon.png"},
+{nome:"Aquiles",status:"morto",especie:"semideus",genero:"masculino",pseudonimo:"Rei, herói",saga:"Troy Saga",imagem:"imagens/aquiles.png"},
+{nome:"Pátroclo",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"soldado comum",saga:"Troy Saga",imagem:"imagens/patroclo.png"},
+{nome:"Hector",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Rei, herói",saga:"Troy Saga",imagem:"imagens/aquiles.png"},
+
+  
+{nome:"Polites",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Marinheiro, panqueca",saga:"Troy Saga",imagem:"imagens/polites.png"},
 {nome:"Eurylochus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Segundo comandante",saga:"Troy Saga",imagem:"imagens/eurylochus.png"},
 {nome:"Elpenor",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Marinheiro azarado",saga:"Circe Saga",imagem:"imagens/elpenor.png"},
 {nome:"Perimedes",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Guerreiro de Ítaca",saga:"Troy Saga",imagem:"imagens/perimedes.png"},
+
 
 {nome:"Athena",status:"vivo",especie:"deus",genero:"feminino",pseudonimo:"Deusa da Sabedoria",saga:"Troy Saga",imagem:"imagens/athena.png"},
 {nome:"Poseidon",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus do Mar",saga:"Ocean Saga",imagem:"imagens/poseidon.png"},
 {nome:"Zeus",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Rei do Olimpo",saga:"Thunder Saga",imagem:"imagens/zeus.png"},
 {nome:"Hermes",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Mensageiro dos Deuses",saga:"Circe Saga",imagem:"imagens/hermes.png"},
 {nome:"Aeolus",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus dos Ventos",saga:"Ocean Saga",imagem:"imagens/aeolus.png"},
-{nome:"Helios",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus do Sol",saga:"Thunder Saga",imagem:"imagens/helios.png"},
-
+{nome:"Apolo",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus do Sol",saga:"Wisdom Saga",imagem:"imagens/apolo.png"},
+{nome:"Ares",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus da Guerra",saga:"Wisdom Saga",imagem:"imagens/ares.png"},
+{nome:"Hefesto",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus do Fogo",saga:"Wisdom Saga",imagem:"imagens/hefesto.png"},
+{nome:"Afrodite",status:"vivo",especie:"deus",genero:"feminino",pseudonimo:"Deusa do Amor",saga:"Wisdom Saga",imagem:"imagens/afrodite.png"},
+{nome:"Hera",status:"vivo",especie:"deus",genero:"feminino",pseudonimo:"Deusa do Casamento",saga:"Wisdom Saga",imagem:"imagens/hera.png"},
+  
 {nome:"Circe",status:"vivo",especie:"semideus",genero:"feminino",pseudonimo:"Feiticeira de Aeaea",saga:"Circe Saga",imagem:"imagens/circe.png"},
 {nome:"Calypso",status:"vivo",especie:"semideus",genero:"feminino",pseudonimo:"Ninfa de Ogígia",saga:"Wisdom Saga",imagem:"imagens/calypso.png"},
 
@@ -24,13 +37,17 @@ const personagens=[
 {nome:"Tiresias",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Profeta cego",saga:"Underworld Saga",imagem:"imagens/tiresias.png"},
 {nome:"Anticlea",status:"morto",especie:"humano",genero:"feminino",pseudonimo:"Mãe de Odysseus",saga:"Underworld Saga",imagem:"imagens/anticlea.png"},
 
-{nome:"Penelope",status:"vivo",especie:"humano",genero:"feminino",pseudonimo:"Rainha de Ítaca",saga:"Wisdom Saga",imagem:"imagens/penelope.png"},
-{nome:"Telemachus",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Príncipe de Ítaca",saga:"Wisdom Saga",imagem:"imagens/telemachus.png"},
+{nome:"Penelope",status:"vivo",especie:"humano",genero:"feminino",pseudonimo:"Rainha",saga:"Wisdom Saga",imagem:"imagens/penelope.png"},
+{nome:"Telemachus",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Príncipe, Warrior of the Mind, Little Wolf",saga:"Wisdom Saga",imagem:"imagens/telemachus.png"},
+{nome:"Argos",status:"vivo",especie:"Cachorro",genero:"masculino",pseudonimo:"Cachorro do Rei",saga:"Wisdom Saga",imagem:"imagens/argos.png"},
 
+  
 {nome:"Antinous",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Líder dos pretendentes",saga:"Ithaca Saga",imagem:"imagens/antinous.png"},
-{nome:"Eurymachus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Pretendente manipulador",saga:"Ithaca Saga",imagem:"imagens/eurymachus.png"},
-{nome:"Amphinomus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Pretendente honrado",saga:"Ithaca Saga",imagem:"imagens/amphinomus.png"}
+{nome:"Eurymachus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Pretendente",saga:"Ithaca Saga",imagem:"imagens/eurymachus.png"},
+{nome:"Amphinomus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Pretendente",saga:"Ithaca Saga",imagem:"imagens/amphinomus.png"},
 
+
+{nome:"Astianax",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Príncipe",saga:"Troy Saga",imagem:"imagens/astianax.png"}
 ]
 function personagemDoDia(){
 
