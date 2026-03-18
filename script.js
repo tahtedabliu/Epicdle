@@ -57,6 +57,100 @@ const personagens=[
 {nome:"Astianax",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Príncipe",saga:"Troy Saga",imagem:"imagens/astianax.png"}
 ]
 
+// ================= PERSONAGEM DO DIA =================
+function personagemDoDia(){
+let hoje=new Date()
+let numero=hoje.getFullYear()*10000+(hoje.getMonth()+1)*100+hoje.getDate()
+return personagens[numero%personagens.length]
+}
+
+// ================= VARIÁVEIS =================
+let resposta = personagemDoDia()
+let tentativas = 0
+let usados = []
+let jogoFinalizado = false
+let selecionadoIndex = -1
+let sugestoesAtuais = []
+
+// ================= ELEMENTOS =================
+let input = document.getElementById("guess")
+let imagem = document.getElementById("imagem")
+
+imagem.src = resposta.imagem
+
+// ================= EVENTOS =================
+input.addEventListener("input", mostrarSugestoes)
+
+input.addEventListener("keydown",function(e){
+
+let itens=document.querySelectorAll("#sugestoes div")
+
+if(e.key==="ArrowDown"){
+selecionadoIndex++
+if(selecionadoIndex>=itens.length)selecionadoIndex=0
+atualizarSelecao(itens)
+return
+}
+
+if(e.key==="ArrowUp"){
+selecionadoIndex--
+if(selecionadoIndex<0)selecionadoIndex=itens.length-1
+atualizarSelecao(itens)
+return
+}
+
+if(e.key==="Enter"){
+
+if(selecionadoIndex>=0){
+input.value=sugestoesAtuais[selecionadoIndex].nome
+}
+
+verificar()
+}
+
+})
+
+// ================= FUNÇÕES =================
+function mostrarMensagem(msg){
+document.getElementById("mensagem").innerText=msg
+}
+
+function mostrarSugestoes(){
+
+let texto=input.value.toLowerCase()
+
+let lista=personagens.filter(p=>
+p.nome.toLowerCase().includes(texto)
+)
+
+sugestoesAtuais=lista
+
+let div=document.getElementById("sugestoes")
+div.innerHTML=""
+
+lista.forEach((p,index)=>{
+
+let item=document.createElement("div")
+item.innerText=p.nome
+
+item.onclick=()=>{
+input.value=p.nome
+limparSugestoes()
+}
+
+div.appendChild(item)
+
+})
+
+}
+
+function atualizarSelecao(itens){
+itens.forEach(i=>i.classList.remove("selecionado"))
+if(itens[selecionadoIndex]){
+itens[selecionadoIndex].classList.add("selecionado")
+}
+}
+
 function limparSugestoes(){
 document.getElementById("sugestoes").innerHTML=""
 selecionadoIndex=-1
