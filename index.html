@@ -2,25 +2,22 @@
 <html>
 
 <head>
-
 <meta charset="UTF-8">
 <title>EPICdle</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
 <div class="container">
 
-<h1>EPICDLE</h1>
+<h1>⚔ EPICdle</h1>
 
-<p>Adivinhe o personagem de Epic The Musical</p>
+<p id="mensagem"></p>
 
 <p id="tentativas">Tentativas: 0</p>
-
 <p id="timer"></p>
 
 <img id="imagem" class="sombra">
@@ -29,14 +26,9 @@
 
 <div id="sugestoes"></div>
 
-<button id="botaoTentar" onclick="verificar()">Tentar</button>
-
-<button id="compartilharBtn" onclick="compartilhar()" style="display:none">
-Compartilhar resultado
-</button>
+<button onclick="verificar()">Tentar</button>
 
 <table id="tabela">
-
 <tr>
 <th>Nome</th>
 <th>Status</th>
@@ -45,18 +37,18 @@ Compartilhar resultado
 <th>Pseudônimo</th>
 <th>Saga</th>
 </tr>
-
 </table>
 
 <div id="vitoria" style="display:none">
 
-<h2>Você acertou!</h2>
+<h2>🎉 Você acertou!</h2>
 
 <img id="imagemVitoria">
 
 <h3 id="nomeVitoria"></h3>
-
 <p id="pseudoVitoria"></p>
+
+<button onclick="compartilhar()">Compartilhar resultado</button>
 
 </div>
 
