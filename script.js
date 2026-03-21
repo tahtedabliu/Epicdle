@@ -200,6 +200,17 @@ mostrarVitoria()
 // ================= COMPARAÇÃO INTELIGENTE =================
 function comparar(linha,tentativa){
 
+// 🖼️ COLUNA DA IMAGEM
+let celulaImagem = linha.insertCell()
+
+let img = document.createElement("img")
+img.src = tentativa.imagem
+img.style.width = "50px"
+img.style.borderRadius = "6px"
+
+celulaImagem.appendChild(img)
+
+// CAMPOS
 let campos=["nome","status","especie","genero","pseudonimo","saga"]
 
 campos.forEach(campo=>{
@@ -211,25 +222,21 @@ celula.classList.add("flip")
 let valorResposta = resposta[campo].toLowerCase()
 let valorTentativa = tentativa[campo].toLowerCase()
 
-// VERDE
 if(valorTentativa === valorResposta){
 
 celula.classList.add("verde")
 
 }else{
 
-// REMOVE PALAVRAS IRRELEVANTES
-let ignorar = ["de","da","do","dos","das","Saga"]
+let ignorar = ["de","da","do","dos","das"]
 
 let listaResposta = valorResposta.split(" ").filter(p=>!ignorar.includes(p))
 let listaTentativa = valorTentativa.split(" ").filter(p=>!ignorar.includes(p))
 
-// VERIFICA INTERSEÇÃO REAL
 let temParcial = listaTentativa.some(palavra =>
 listaResposta.includes(palavra)
 )
 
-// AMARELO OU VERMELHO
 if(temParcial){
 celula.classList.add("amarelo")
 }else{
