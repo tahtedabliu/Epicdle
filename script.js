@@ -200,17 +200,6 @@ mostrarVitoria()
 // ================= COMPARAÇÃO INTELIGENTE =================
 function comparar(linha,tentativa){
 
-// 🖼️ COLUNA DA IMAGEM
-let celulaImagem = linha.insertCell()
-
-let img = document.createElement("img")
-img.src = tentativa.imagem
-img.style.width = "50px"
-img.style.borderRadius = "6px"
-
-celulaImagem.appendChild(img)
-
-// CAMPOS
 let campos=["nome","status","especie","genero","pseudonimo","saga"]
 
 campos.forEach(campo=>{
@@ -222,21 +211,23 @@ celula.classList.add("flip")
 let valorResposta = resposta[campo].toLowerCase()
 let valorTentativa = tentativa[campo].toLowerCase()
 
+// 🟩 IGUAL
 if(valorTentativa === valorResposta){
 
 celula.classList.add("verde")
 
 }else{
 
-let ignorar = ["de","da","do","dos","das"]
+// 🔥 SEPARA POR VÍRGULA (LISTA REAL)
+let listaResposta = valorResposta.split(",").map(v => v.trim())
+let listaTentativa = valorTentativa.split(",").map(v => v.trim())
 
-let listaResposta = valorResposta.split(" ").filter(p=>!ignorar.includes(p))
-let listaTentativa = valorTentativa.split(" ").filter(p=>!ignorar.includes(p))
-
-let temParcial = listaTentativa.some(palavra =>
-listaResposta.includes(palavra)
+// 🟨 VERIFICA SE TEM ALGUM ITEM IGUAL
+let temParcial = listaTentativa.some(item =>
+listaResposta.includes(item)
 )
 
+// RESULTADO
 if(temParcial){
 celula.classList.add("amarelo")
 }else{
@@ -248,7 +239,6 @@ celula.classList.add("vermelho")
 })
 
 }
-
 // ================= VITÓRIA =================
 function mostrarVitoria(){
 
