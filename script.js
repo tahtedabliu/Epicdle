@@ -229,7 +229,7 @@ celula.classList.add("verde")
 
 }else{
 
-// 🔥 SEPARA POR VÍRGULA (LISTA REAL)
+// 🟥 SEPARA POR VÍRGULA (LISTA REAL)
 let listaResposta = valorResposta.split(",").map(v => v.trim())
 let listaTentativa = valorTentativa.split(",").map(v => v.trim())
 
