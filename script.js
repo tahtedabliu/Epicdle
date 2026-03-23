@@ -55,6 +55,11 @@ const personagens=[
 
 ]
 
+// ================= ORDEM ALFABETICA =================
+personagens.sort((a,b)=>
+a.nome.localeCompare(b.nome, "pt", {sensitivity:"base"})
+)
+
 // ================= CHAVE DO DIA =================
 const chaveJogo = "epicdle-" + new Date().toISOString().slice(0,10)
 
