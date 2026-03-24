@@ -496,52 +496,256 @@ location.reload()
 carregarProgresso()
 input.focus()
 
+// ================= MODO MUSICA =================
 
-/* ===== MUSICA ===== */
+// ================= MÚSICAS =================
+const musicas = [
+{
+nome:"Warrior of the Mind",
+letra:`I am the one who leads
+I am the one who fights
+No one can stop me now
+I’ll win this endless night`,
+capa:"imagens/warrior.jpg",
+saga:"Saga de Atena"
+},
+{
+nome:"Just a Man",
+letra:`I'm just a man
+Trying to survive
+In a world so cruel
+I barely stay alive`,
+capa:"imagens/justaman.jpg",
+saga:"Saga de Odisseu"
+}
+]
 
-#menu{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-height:100vh;
-gap:15px;
+// ================= DATA =================
+function getDataLocal(){
+const hoje = new Date()
+return hoje.getFullYear()+"-"+String(hoje.getMonth()+1).padStart(2,"0")+"-"+String(hoje.getDate()).padStart(2,"0")
 }
 
-#trechoMusica{
-background:#111;
-color:#0f0;
-padding:10px;
-border-radius:8px;
-white-space:pre-wrap;
+// ================= MUSICA DO DIA =================
+function musicaDoDia(){
+let n = parseInt(getDataLocal().replace(/-/g,""))
+return musicas[n % musicas.length]
 }
 
-#sugestoesMusica{
-background:#222;
-margin-top:5px;
-border-radius:6px;
+// ================= VARIAVEIS =================
+let respostaMusica
+let tentativasMusica = 0
+let usadosMusica = []
+let jogoFinalizadoMusica = false
+
+// ================= TRECHO PROGRESSIVO =================
+function pegarTrechoProgressivo(letra, tentativas){
+
+let linhas = letra.split("\n").filter(l=>l.trim())
+
+let quantidade = 1
+if(tentativas>=2) quantidade=2
+if(tentativas>=3) quantidade=3
+if(tentativas>=4) quantidade=4
+
+let seed = parseInt(getDataLocal().replace(/-/g,""))
+let inicio = seed % linhas.length
+
+let trecho = linhas.slice(inicio, inicio+quantidade)
+if(trecho.length < quantidade) trecho = linhas.slice(0,quantidade)
+
+return trecho.join("\n")
 }
 
-#sugestoesMusica div{
-padding:8px;
-cursor:pointer;
+// ================= STORAGE =================
+function salvar(){
+localStorage.setItem("music", JSON.stringify({
+data:getDataLocal(),
+tentativas:tentativasMusica,
+usados:usadosMusica,
+fim:jogoFinalizadoMusica
+}))
 }
 
-#sugestoesMusica div:hover{
-background:#555;
+function carregar(){
+let d = JSON.parse(localStorage.getItem("music"))
+if(!d || d.data !== getDataLocal()) return
+
+tentativasMusica = d.tentativas
+usadosMusica = d.usados
+jogoFinalizadoMusica = d.fim
 }
 
-.selecionado{
-background:#777 !important;
+// ================= INICIAR =================
+function iniciarMusica(){
+
+respostaMusica = musicaDoDia()
+carregar()
+
+document.getElementById("tentativasMusica").innerText =
+"Tentativas: "+tentativasMusica
+
+atualizarTrecho()
+
+usadosMusica.forEach(nome=>{
+let l = document.getElementById("tabelaMusica").insertRow()
+l.insertCell().innerText = nome
+})
+
+// dica persistente
+if(tentativasMusica>=4 && !jogoFinalizadoMusica){
+document.getElementById("dicaMusica").innerText =
+"💡 Saga: "+respostaMusica.saga
 }
 
-#capaMusica{
-width:200px;
-margin-top:10px;
-border-radius:10px;
+// vitória persistente
+if(jogoFinalizadoMusica){
+mostrarVitoria()
+}
 }
 
-#dicaMusica{
-color:#fbc02d;
-margin-top:10px;
+// ================= TRECHO =================
+function atualizarTrecho(){
+document.getElementById("trechoMusica").innerText =
+pegarTrechoProgressivo(respostaMusica.letra, tentativasMusica)
+}
+
+// ================= VERIFICAR =================
+function verificarMusica(){
+
+if(jogoFinalizadoMusica) return
+
+let input = document.getElementById("guessMusica")
+let nome = input.value.trim()
+
+let tentativa = musicas.find(m =>
+m.nome.toLowerCase() === nome.toLowerCase()
+)
+
+if(!tentativa) return alert("Não encontrada")
+if(usadosMusica.includes(tentativa.nome)) return alert("Já tentou")
+
+usadosMusica.push(tentativa.nome)
+tentativasMusica++
+
+document.getElementById("tentativasMusica").innerText =
+"Tentativas: "+tentativasMusica
+
+let l = document.getElementById("tabelaMusica").insertRow()
+l.insertCell().innerText = tentativa.nome
+
+// ACERTO
+if(tentativa.nome === respostaMusica.nome){
+jogoFinalizadoMusica = true
+mostrarVitoria()
+salvar()
+return
+}
+
+// DICA FINAL
+if(tentativasMusica === 4){
+document.getElementById("dicaMusica").innerText =
+"💡 Saga: "+respostaMusica.saga
+}
+
+// PERDEU
+if(tentativasMusica >= 5){
+alert("Fim! Resposta: "+respostaMusica.nome)
+jogoFinalizadoMusica = true
+salvar()
+return
+}
+
+atualizarTrecho()
+salvar()
+input.value=""
+}
+
+// ================= VITORIA =================
+function mostrarVitoria(){
+document.getElementById("resultadoMusica").style.display="block"
+document.getElementById("capaMusica").src = respostaMusica.capa
+document.getElementById("nomeMusica").innerText = respostaMusica.nome
+}
+
+// ================= SUGESTÕES =================
+let selecionado = -1
+
+document.getElementById("guessMusica").addEventListener("input",function(){
+
+let v = this.value.toLowerCase()
+let box = document.getElementById("sugestoesMusica")
+
+box.innerHTML=""
+selecionado=-1
+
+if(!v) return
+
+musicas.filter(m=>m.nome.toLowerCase().includes(v))
+.slice(0,5)
+.forEach(m=>{
+let d = document.createElement("div")
+d.innerText = m.nome
+d.onclick=()=>{
+this.value=m.nome
+box.innerHTML=""
+}
+box.appendChild(d)
+})
+
+})
+
+// teclado
+document.getElementById("guessMusica").addEventListener("keydown",function(e){
+
+let itens = document.querySelectorAll("#sugestoesMusica div")
+
+if(e.key==="ArrowDown") selecionado++
+if(e.key==="ArrowUp") selecionado--
+
+if(selecionado>=itens.length) selecionado=0
+if(selecionado<0) selecionado=itens.length-1
+
+if(e.key==="Enter"){
+if(selecionado>=0){
+this.value = itens[selecionado].innerText
+document.getElementById("sugestoesMusica").innerHTML=""
+}else{
+verificarMusica()
+}
+}
+
+itens.forEach(i=>i.classList.remove("selecionado"))
+if(itens[selecionado]) itens[selecionado].classList.add("selecionado")
+
+})
+
+// ================= MENU =================
+function abrirModo(){
+document.getElementById("menu").style.display="none"
+document.getElementById("jogoMusica").style.display="block"
+iniciarMusica()
+}
+
+function voltarMenu(){
+document.getElementById("menu").style.display="flex"
+document.getElementById("jogoMusica").style.display="none"
+}
+
+// ================= COMPARTILHAR =================
+function compartilharMusica(){
+
+let txt = "EPICdle Música "+tentativasMusica+"/5\n"
+
+usadosMusica.forEach(()=> txt+="🎵")
+
+navigator.clipboard.writeText(txt)
+alert("Copiado!")
+}
+
+// ================= FEEDBACK =================
+function enviarFeedback(){
+let msg = document.getElementById("msgFeedback").value
+if(!msg) return
+alert("Enviado!")
 }
