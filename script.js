@@ -278,6 +278,94 @@ mostrarMensagem("🎉 Acertou!")
 salvarProgresso()
 }
 
+
+
+// ================= COMPARTILHAR =================
+function compartilhar(){
+
+let linhas = document.querySelectorAll("#tabela tr")
+
+let texto = "EPICdle " + tentativas + " tentativas\n\n"
+
+linhas.forEach((linha,i)=>{
+
+if(i===0) return
+
+linha.querySelectorAll("td").forEach(c=>{
+
+if(c.classList.contains("verde")) texto+="🟩"
+else if(c.classList.contains("amarelo")) texto+="🟨"
+else texto+="🟥"
+
+})
+
+texto+="\n"
+
+})
+
+// ================= SHARE NATIVO (CELULAR) =================
+if(navigator.share){
+
+navigator.share({
+title: "EPICdle",
+text: texto
+})
+.then(()=>{
+mostrarMensagem("Compartilhado! 🚀")
+})
+.catch(()=>{
+copiarTexto(texto)
+})
+
+}else{
+
+// ================= COPIAR =================
+copiarTexto(texto)
+
+}
+
+}
+
+// ================= FUNÇÃO COPIAR =================
+function copiarTexto(texto){
+
+if(navigator.clipboard && window.isSecureContext){
+
+navigator.clipboard.writeText(texto)
+.then(()=>{
+mostrarMensagem("Resultado copiado! 📋")
+})
+.catch(()=>{
+fallbackCopiar(texto)
+})
+
+}else{
+fallbackCopiar(texto)
+}
+
+}
+
+// ================= FALLBACK UNIVERSAL =================
+function fallbackCopiar(texto){
+
+let textarea = document.createElement("textarea")
+textarea.value = texto
+
+document.body.appendChild(textarea)
+
+textarea.select()
+textarea.setSelectionRange(0,99999)
+
+try{
+document.execCommand("copy")
+mostrarMensagem("Resultado copiado! 📋")
+}catch(err){
+mostrarMensagem("Não foi possível copiar 😢")
+}
+
+document.body.removeChild(textarea)
+
+}
 // ================= SALVAR =================
 function salvarProgresso(){
 
