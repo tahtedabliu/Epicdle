@@ -1,4 +1,4 @@
-const personagens=[
+   const personagens=[
 //guerra de troia
 {nome:"Odysseus",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei, Warrior of the Mind, Monster, Just a Man, Kinda Funny, Loyal Husband",saga:"Troy ",imagemTentativa:"imagens/odysseus.png",imagemVitoria:"imagens/odysseus-vitoria.png"},
 {nome:"Diomedes",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei, Warrior of the Mind",saga:"Troy ",imagemTentativa:"imagens/diomedes.png",imagemVitoria:"imagens/diomedes-vitoria.png"},
@@ -261,6 +261,8 @@ let imgVitoria = document.getElementById("imagemVitoria")
 
 if(resposta?.imagemVitoria){
 imgVitoria.src = resposta.imagemVitoria
+ 
+localStorage.setItem(chaveJogo + "-vitoria", "true")
 }
 
 document.getElementById("nomeVitoria").innerText=resposta.nome
@@ -269,6 +271,31 @@ document.getElementById("pseudoVitoria").innerText=resposta.pseudonimo
 input.disabled = true
 
 mostrarMensagem("Parabéns! Você acertou!")
+
+ // ===== STREAK =====
+let hoje = new Date().toISOString().slice(0,10)
+
+let ultimoDia = localStorage.getItem("epicdle-ultimo-dia")
+let streak = parseInt(localStorage.getItem("epicdle-streak")) || 0
+
+if(ultimoDia){
+let ontem = new Date()
+ontem.setDate(ontem.getDate()-1)
+ontem = ontem.toISOString().slice(0,10)
+
+if(ultimoDia === ontem){
+streak++
+}else if(ultimoDia !== hoje){
+streak = 1
+}
+}else{
+streak = 1
+}
+
+localStorage.setItem("epicdle-streak", streak)
+localStorage.setItem("epicdle-ultimo-dia", hoje)
+
+mostrarMensagem("🔥 Streak: " + streak)
 
 }
 
@@ -319,7 +346,12 @@ dados = JSON.parse(dados)
 // 🔥 restaura resposta correta
 if(dados.respostaNome){
 let salvo = personagens.find(p => p.nome === dados.respostaNome)
+ 
 if(salvo) resposta = salvo
+ 
+if(localStorage.getItem(chaveJogo + "-vitoria") === "true"){
+mostrarVitoria()
+}
 }
 
 tentativas = dados.tentativas || 0
@@ -353,6 +385,34 @@ celula.className = celulaSalva.classe
 
 })
 
+ // ================= COMPARTILHAR =================
+function compartilhar(){
+
+let linhas=document.querySelectorAll("#tabela tr")
+
+let texto="EPICdle "+tentativas+" tentativas\n"
+texto+="🔥 Streak: "+(localStorage.getItem("epicdle-streak")||1)+"\n\n"
+
+linhas.forEach((linha,i)=>{
+
+if(i==0)return
+
+linha.querySelectorAll("td").forEach(c=>{
+
+if(c.classList.contains("verde")) texto+="🟩"
+else if(c.classList.contains("amarelo")) texto+="🟨"
+else texto+="🟥"
+
+})
+
+texto+="\n"
+
+})
+
+navigator.clipboard.writeText(texto)
+mostrarMensagem("Resultado copiado!")
+}
+ 
 if(jogoFinalizado){
 mostrarVitoria()
 }
@@ -361,3 +421,4 @@ mostrarVitoria()
 
 // ================= INICIAR =================
 carregarProgresso()
+input.focus()
