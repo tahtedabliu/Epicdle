@@ -250,3 +250,52 @@ font-size:16px;
 }
 
 }
+
+/* ===== MUSICA ===== */
+
+#menu{
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:100vh;
+gap:15px;
+}
+
+#trechoMusica{
+background:#111;
+color:#0f0;
+padding:10px;
+border-radius:8px;
+white-space:pre-wrap;
+}
+
+#sugestoesMusica{
+background:#222;
+margin-top:5px;
+border-radius:6px;
+}
+
+#sugestoesMusica div{
+padding:8px;
+cursor:pointer;
+}
+
+#sugestoesMusica div:hover{
+background:#555;
+}
+
+.selecionado{
+background:#777 !important;
+}
+
+#capaMusica{
+width:200px;
+margin-top:10px;
+border-radius:10px;
+}
+
+#dicaMusica{
+color:#fbc02d;
+margin-top:10px;
+}
