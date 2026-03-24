@@ -170,9 +170,10 @@ return
 
 let nome=input.value.trim()
 
-let tentativa=personagens.find(p=>
-p.nome.toLowerCase()===nome.toLowerCase()
-)
+let tentativa = personagens.find(p => p.nome === linhaSalva.nome)
+if(!tentativa) return // 🔥 evita quebrar tudo
+let img = document.createElement("img")
+img.src = tentativa.imagemTentativa
 
 if(!tentativa){
 mostrarMensagem("Personagem não encontrado")
@@ -264,7 +265,9 @@ jogoFinalizado=true
 document.getElementById("vitoria").style.display="block"
 
 let imgVitoria = document.getElementById("imagemVitoria")
+if(resposta && resposta.imagemVitoria){
 imgVitoria.src = resposta.imagemVitoria
+}
 
 imgVitoria.onerror = () => {
 imgVitoria.src = resposta.imagemTentativa
