@@ -298,11 +298,14 @@ else if(c.classList.contains("amarelo")) texto+="🟨"
 else texto+="🟥"
 
 })
-texto = "https://tahtedabliu.github.io/Epicdle/\n\n"
+   
 texto+="\n"
 
 })
-
+// 🔗 LINK DO JOGO
+let link = window.location.href
+texto += "\nJogue aqui: " + link
+   
 // ================= SHARE NATIVO (CELULAR) =================
 if(navigator.share){
 
