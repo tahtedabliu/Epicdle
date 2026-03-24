@@ -10,7 +10,16 @@
 </head>
 
 <body>
+  
+<!-- MENU -->
+<div id="menu">
+<h1>EPICDLE</h1>
 
+<button onclick="abrirModo('musica')">🎵 Modo Música</button>
+<button onclick="abrirSobre()">📖 Sobre</button>
+<button onclick="abrirFeedback()">💬 Feedback</button>
+</div>
+  
 <div class="container">
 
 <h1>EPICDLE</h1>
@@ -56,7 +65,46 @@ Compartilhar resultado
 
 </div>
 
-<script src="script.js"></script>
+<script src="script.js"><div id="sobre" style="display:none">
+<h2>Sobre</h2>
+<p>Inspirado no Wordle</p>
+<button onclick="voltarMenu()">Voltar</button>
+</div>
 
+<div id="feedback" style="display:none">
+<textarea id="msgFeedback"></textarea>
+<button onclick="enviarFeedback()">Enviar</button>
+<button onclick="voltarMenu()">Voltar</button>
+  </div></script>
+<div class="container" id="jogoMusica" style="display:none">
+
+<h2>Modo Música</h2>
+
+<p id="tentativasMusica">Tentativas: 0</p>
+<p id="timerMusica"></p>
+
+<pre id="trechoMusica"></pre>
+<p id="dicaMusica"></p>
+
+<input type="text" id="guessMusica">
+<div id="sugestoesMusica"></div>
+
+<button onclick="verificarMusica()">Tentar</button>
+
+<table id="tabelaMusica">
+<tr><th>Música</th></tr>
+</table>
+
+<div id="resultadoMusica" style="display:none">
+<h2>🎉 Acertou!</h2>
+<img id="capaMusica">
+<h3 id="nomeMusica"></h3>
+</div>
+
+<button onclick="compartilharMusica()">Compartilhar</button>
+<button onclick="voltarMenu()">⬅ Voltar</button>
+
+</div>
+  
 </body>
 </html>
