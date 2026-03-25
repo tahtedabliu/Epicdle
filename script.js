@@ -24,7 +24,7 @@ const personagens=[
 {nome:"Aeolus",status:"alive",especie:"god",genero:"male",pseudonimo:"Lord of the Winds",saga:"Ocean",imagemTentativa:"imagens/aeolus.png",imagemVitoria:"imagens/aeolus-vitoria.png"},
 {nome:"Apollo",status:"alive",especie:"god",genero:"male",pseudonimo:"God of the Sun",saga:"Wisdom",imagemTentativa:"imagens/apolo.png",imagemVitoria:"imagens/apolo-vitoria.png"},
 {nome:"Ares",status:"alive",especie:"god",genero:"male",pseudonimo:"God of War",saga:"Wisdom",imagemTentativa:"imagens/ares.png",imagemVitoria:"imagens/ares-vitoria.png"},
-{nome:"Hephaestus",status:"alive",especie:"god",genero:"male",pseudonimo:"God of the Forge",saga:"Wisdom",imagemTentativa:"imagens/hefesto.png",imagemVitoria:"imagens/hefesto-vitoria.png"},
+{nome:"Hephaestus",status:"alive",especie:"god",genero:"male",pseudonimo:"God of the Forge",saga:"Wisdom",imagemTentativa:"imagens/hefesto.png",imagemVitoria:"imagens/hefesto-vitoria.gif"},
 {nome:"Aphrodite",status:"alive",especie:"god",genero:"female",pseudonimo:"Goddess of Love",saga:"Wisdom",imagemTentativa:"imagens/afrodite.png",imagemVitoria:"imagens/afrodite-vitoria.png"},
 {nome:"Hera",status:"alive",especie:"god",genero:"female",pseudonimo:"Goddess of Marriage",saga:"Wisdom",imagemTentativa:"imagens/hera.png",imagemVitoria:"imagens/hera-vitoria.png"},
 {nome:"Circe",status:"alive",especie:"god",genero:"female",pseudonimo:"Sorceress",saga:"Circe",imagemTentativa:"imagens/circe.png",imagemVitoria:"imagens/circe-vitoria.png"},
