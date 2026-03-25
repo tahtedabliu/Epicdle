@@ -81,87 +81,123 @@ let usados = []
 let jogoFinalizado = false
 let selecionadoIndex = -1
 let sugestoesAtuais = []
-// ================= ELEMENTOS =================
-let input = document.getElementById("guess")
-// ================= EVENTOS =================
-input.addEventListener("input", mostrarSugestoes)
-input.addEventListener("keydown",function(e){
-let itens=document.querySelectorAll("#sugestoes div")
-if(e.key==="ArrowDown"){
-selecionadoIndex++
-if(selecionadoIndex>=itens.length)selecionadoIndex=0
-atualizarSelecao(itens)
-return
-}
-if(e.key==="ArrowUp"){
-selecionadoIndex--
-if(selecionadoIndex<0)selecionadoIndex=itens.length-1
-atualizarSelecao(itens)
-return
-}
-if(e.key==="Enter"){
-if(selecionadoIndex>=0){
-input.value=sugestoesAtuais[selecionadoIndex].nome
-}
-verificar()
-}
-})
+
 // ================= MENSAGEM =================
 function mostrarMensagem(msg){
 document.getElementById("mensagem").innerText=msg
 }
 // ================= SUGESTÕES =================
+// ================= NORMALIZAR =================
+function normalizar(txt){
+return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+}
+
+// ================= ELEMENTOS =================
+let input = document.getElementById("guess")
+let box = document.getElementById("sugestoes")
+
+let selecionadoIndex = -1
+let sugestoesAtuais = []
+
+// ================= DIGITAÇÃO =================
+if(input){
+
+input.addEventListener("input", mostrarSugestoes)
+
+input.addEventListener("keydown", function(e){
+
+let itens = document.querySelectorAll("#sugestoes div")
+
+// ↓
+if(e.key === "ArrowDown"){
+selecionadoIndex++
+if(selecionadoIndex >= itens.length) selecionadoIndex = 0
+atualizarSelecao(itens)
+return
+}
+
+// ↑
+if(e.key === "ArrowUp"){
+selecionadoIndex--
+if(selecionadoIndex < 0) selecionadoIndex = itens.length - 1
+atualizarSelecao(itens)
+return
+}
+
+// ENTER
+if(e.key === "Enter"){
+
+if(selecionadoIndex >= 0){
+input.value = sugestoesAtuais[selecionadoIndex].nome
+limparSugestoes()
+}else{
+verificar()
+}
+
+}
+
+})
+
+}
+
+// ================= MOSTRAR =================
 function mostrarSugestoes(){
-let texto=input.value.toLowerCase()
-let lista=personagens.filter(p=>
-p.nome.toLowerCase().includes(texto)
+
+let texto = normalizar(input.value)
+box.innerHTML = ""
+
+// 👉 some quando vazio
+if(!texto){
+return
+}
+
+let lista = personagens.filter(p =>
+normalizar(p.nome).includes(texto)
 )
-sugestoesAtuais=lista
-let div=document.getElementById("sugestoes")
-div.innerHTML=""
-lista.forEach((p,index)=>{
-let item=document.createElement("div")
-item.innerText=p.nome
-item.onclick=()=>{
-input.value=p.nome
+
+sugestoesAtuais = lista
+
+lista.slice(0,5).forEach((p,index)=>{
+
+let item = document.createElement("div")
+item.innerText = p.nome
+
+item.onclick = ()=>{
+input.value = p.nome
 limparSugestoes()
 }
-div.appendChild(item)
+
+box.appendChild(item)
+
 })
+
 }
+
+// ================= SELEÇÃO =================
 function atualizarSelecao(itens){
-itens.forEach(i=>i.classList.remove("selecionado"))
+
+itens.forEach(i => i.classList.remove("selecionado"))
+
 if(itens[selecionadoIndex]){
 itens[selecionadoIndex].classList.add("selecionado")
 }
+
 }
+
+// ================= LIMPAR =================
 function limparSugestoes(){
-document.getElementById("sugestoes").innerHTML=""
-selecionadoIndex=-1
+box.innerHTML = ""
+selecionadoIndex = -1
 }
-// ================= VERIFICAR =================
-function verificar(){
-if(jogoFinalizado){
-mostrarMensagem("O jogo já terminou!")
-return
-}
-let nome=input.value.trim()
-let tentativa = personagens.find(p => p.nome === nome)
-if(!tentativa){
-mostrarMensagem("Personagem não encontrado")
-return
-}
-if(usados.includes(tentativa.nome)){
-mostrarMensagem("Você já tentou esse personagem!")
-return
-}
-usados.push(tentativa.nome)
-tentativas++
-document.getElementById("tentativas").innerText="Tentativas: "+tentativas
-let linha=document.getElementById("tabela").insertRow()
-comparar(linha,tentativa)
-input.value=""
+
+// ================= CLICAR FORA =================
+document.addEventListener("click", (e) => {
+
+if(!e.target.closest(".input-box")){
 limparSugestoes()
+}
+
+})
 if(tentativa.nome===resposta.nome){
 mostrarVitoria()
 }
@@ -381,37 +417,3 @@ document.getElementById("menu").style.display = "block"
 document.getElementById("jogo").style.display = "none"
 }
 
-const input = document.getElementById("guess")
-const box = document.getElementById("sugestoes")
-
-input.addEventListener("input", () => {
-
-let valor = normalizar(input.value)
-
-box.innerHTML = ""
-
-// 👉 AQUI 👇 (logo depois de limpar)
-if(!input.value){
-box.innerHTML = ""
-return
-}
-
-let filtrados = personagens.filter(p =>
-normalizar(p.nome).includes(valor)
-)
-
-filtrados.slice(0,5).forEach(p => {
-
-let div = document.createElement("div")
-div.innerText = p.nome
-
-div.onclick = () => {
-input.value = p.nome
-box.innerHTML = ""
-}
-
-box.appendChild(div)
-
-})
-
-})
