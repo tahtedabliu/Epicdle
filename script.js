@@ -212,7 +212,7 @@ imgVitoria.src = resposta.imagemVitoria || resposta.imagemTentativa
 document.getElementById("nomeVitoria").innerText=resposta.nome
 document.getElementById("pseudoVitoria").innerText=resposta.pseudonimo
 input.disabled = true
-mostrarMensagem("🎉 Acertou!")
+mostrarMensagem("🎉 Correct!")
 salvarProgresso()
 }
 // ================= COMPARTILHAR =================
@@ -238,7 +238,7 @@ title: "EPICdle",
 text: texto
 })
 .then(()=>{
-mostrarMensagem("Compartilhado! 🚀")
+mostrarMensagem("Shared!")
 })
 .catch(()=>{
 copiarTexto(texto)
@@ -253,7 +253,7 @@ function copiarTexto(texto){
 if(navigator.clipboard && window.isSecureContext){
 navigator.clipboard.writeText(texto)
 .then(()=>{
-mostrarMensagem("Resultado copiado! 📋")
+mostrarMensagem("Resultado copiado!📋")
 })
 .catch(()=>{
 fallbackCopiar(texto)
@@ -321,7 +321,7 @@ return
 tentativas = dados.tentativas
 usados = dados.usados
 jogoFinalizado = dados.jogoFinalizado
-document.getElementById("tentativas").innerText = "Tentativas: " + tentativas
+document.getElementById("tentativas").innerText = "Guesses: " + tentativas
 dados.linhas.forEach(linhaSalva => {
 let tentativa = personagens.find(p => p.nome === linhaSalva.nome)
 if(!tentativa) return
