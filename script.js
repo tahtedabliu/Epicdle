@@ -79,8 +79,6 @@ let resposta = personagemDoDia()
 let tentativas = 0
 let usados = []
 let jogoFinalizado = false
-let selecionadoIndex = -1
-let sugestoesAtuais = []
 
 // ================= MENSAGEM =================
 function mostrarMensagem(msg){
