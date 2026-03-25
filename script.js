@@ -380,3 +380,16 @@ function voltarMenu(){
 document.getElementById("menu").style.display = "block"
 document.getElementById("jogo").style.display = "none"
 }
+
+const input = document.getElementById("guess")
+const box = document.getElementById("sugestoes")
+
+box.addEventListener("mouseleave", () => {
+setTimeout(() => box.innerHTML = "", 200)
+})
+
+document.addEventListener("click", (e) => {
+if(!e.target.closest(".input-box")){
+box.innerHTML = ""
+}
+})
