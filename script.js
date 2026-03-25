@@ -384,12 +384,34 @@ document.getElementById("jogo").style.display = "none"
 const input = document.getElementById("guess")
 const box = document.getElementById("sugestoes")
 
-box.addEventListener("mouseleave", () => {
-setTimeout(() => box.innerHTML = "", 200)
-})
+input.addEventListener("input", () => {
 
-document.addEventListener("click", (e) => {
-if(!e.target.closest(".input-box")){
+let valor = normalizar(input.value)
+
+box.innerHTML = ""
+
+// 👉 AQUI 👇 (logo depois de limpar)
+if(!input.value){
+box.innerHTML = ""
+return
+}
+
+let filtrados = personagens.filter(p =>
+normalizar(p.nome).includes(valor)
+)
+
+filtrados.slice(0,5).forEach(p => {
+
+let div = document.createElement("div")
+div.innerText = p.nome
+
+div.onclick = () => {
+input.value = p.nome
 box.innerHTML = ""
 }
+
+box.appendChild(div)
+
+})
+
 })
