@@ -1,174 +1,69 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
 <meta charset="UTF-8">
-
 <title>EPICDLE</title>
 
-
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
-
-
 
 </head>
 
-
-
 <body>
 
-
-
 <!-- MENU -->
-
 <div id="menu" class="container">
 
-
-
 <h1>EPICDLE</h1>
-
-
 
 <button onclick="abrirJogo()">Jogar</button>
 
-
-
 </div>
 
-
-
 <!-- JOGO -->
-
 <div id="jogo" class="container" style="display:none">
-
-
 
 <h1>EPICDLE</h1>
 
-
-
 <p id="mensagem"></p>
-
 <p id="tentativas">Tentativas: 0</p>
-
 <p id="timer"></p>
 
-
-
 <input type="text" id="guess" placeholder="Digite o personagem">
-
 <div id="sugestoes"></div>
-
-
 
 <button onclick="verificar()">Tentar</button>
 
-
-
 <table id="tabela">
-
 <tr>
-
 <th>Imagem</th>
-
 <th>Nome</th>
-
 <th>Status</th>
-
 <th>Espécie</th>
-
 <th>Gênero</th>
-
 <th>Pseudônimo</th>
-
 <th>Saga</th>
-
 </tr>
-
 </table>
-
-
 
 <div id="vitoria" style="display:none">
 
-
-
 <h2>🎉 Você acertou!</h2>
-
-
 
 <img id="imagemVitoria">
 
-
-
 <h3 id="nomeVitoria"></h3>
-
 <p id="pseudoVitoria"></p>
-
-
 
 <button onclick="compartilhar()">Compartilhar</button>
 
-
-
 </div>
-
-
 
 <button onclick="voltarMenu()">⬅ Voltar</button>
 
-
-
 </div>
-
-
 
 <script src="script.js"></script>
 
-
-
 </body>
-
-</html>
-<h2>🎉 Você acertou!</h2>
-
-
-
-<img id="imagemVitoria">
-
-
-
-<h3 id="nomeVitoria"></h3>
-
-<p id="pseudoVitoria"></p>
-
-
-
-<button onclick="compartilhar()">Compartilhar</button>
-
-
-
-</div>
-
-
-
-<button onclick="voltarMenu()">⬅ Voltar</button>
-
-
-
-</div>
-
-
-
-<script src="script.js"></script>
-
-
-
-</body>
-
 </html>
