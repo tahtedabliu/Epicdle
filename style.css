@@ -73,13 +73,24 @@ background:#4caf50;
 transform:scale(1.05);
 }
 /* ================= SUGESTÕES ================= */
-#sugestoes{
+.input-box{
+position:relative;
 width:80%;
-margin:10px auto;
-background:#1f1f1f;
+margin:auto;
+}
+
+#sugestoes{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:#222;
 border-radius:8px;
 overflow:hidden;
-border:1px solid #333;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+z-index:10;
+max-height:200px;
+overflow-y:auto;
 }
 #sugestoes div{
 padding:10px;
