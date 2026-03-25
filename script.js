@@ -323,7 +323,30 @@ usados:usadosMusica,
 fim:fimMusica
 }))
 }
+// ================= MENU =================
+function abrirModo(modo){
 
+document.getElementById("menu").style.display = "none"
+
+document.getElementById("personagem").style.display = "none"
+document.getElementById("musica").style.display = "none"
+document.getElementById("sobre").style.display = "none"
+
+document.getElementById(modo).style.display = "block"
+
+if(modo === "personagem") iniciarPersonagem()
+if(modo === "musica") iniciarMusica()
+}
+
+function voltarMenu(){
+
+document.getElementById("menu").style.display = "block"
+
+document.getElementById("personagem").style.display = "none"
+document.getElementById("musica").style.display = "none"
+document.getElementById("sobre").style.display = "none"
+
+}
 // ================= INIT =================
 atualizarTimer()
 atualizarStreak()
