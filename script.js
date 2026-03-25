@@ -370,3 +370,13 @@ location.reload()
 // ================= INICIAR =================
 carregarProgresso()
 input.focus()
+
+function abrirJogo(){
+document.getElementById("menu").style.display = "none"
+document.getElementById("jogo").style.display = "block"
+}
+
+function voltarMenu(){
+document.getElementById("menu").style.display = "block"
+document.getElementById("jogo").style.display = "none"
+}
