@@ -86,7 +86,7 @@ let sugestoesAtuais = []
 function mostrarMensagem(msg){
 document.getElementById("mensagem").innerText=msg
 }
-// ================= SUGESTÕES =================
+
 // ================= NORMALIZAR =================
 function normalizar(txt){
 return txt.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"")
@@ -126,8 +126,6 @@ input.value = sugestoesAtuais[selecionadoIndex].nome
 limparSugestoes()
 }else{
 verificar()
-}
-
 }
 
 })
