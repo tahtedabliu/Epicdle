@@ -1,3 +1,59 @@
+const personagens=[
+
+// ===== GUERRA DE TROIA =====
+{nome:"Odysseus",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei, Warrior of the Mind, Monster, Just a Man, Loyal Husband",saga:"Troy",imagemTentativa:"imagens/odysseus.png",imagemVitoria:"imagens/odysseus-vitoria.png"},
+{nome:"Diomedes",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei, Guerreiro",saga:"Troy",imagemTentativa:"imagens/diomedes.png",imagemVitoria:"imagens/diomedes-vitoria.png"},
+{nome:"Menelaus",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Rei",saga:"Troy",imagemTentativa:"imagens/menelau.png",imagemVitoria:"imagens/menelau-vitoria.png"},
+{nome:"Agamemnon",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Rei, General, Disloyal Husband",saga:"Troy",imagemTentativa:"imagens/agamenom.png",imagemVitoria:"imagens/agamenom-vitoria.png"},
+{nome:"Achilles",status:"morto",especie:"semideus",genero:"masculino",pseudonimo:"Herói Invencível",saga:"Troy",imagemTentativa:"imagens/aquiles.png",imagemVitoria:"imagens/aquiles-vitoria.png"},
+{nome:"Patroclus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Companheiro de Achilles",saga:"Troy",imagemTentativa:"imagens/pátroclo.png",imagemVitoria:"imagens/pátroclo-vitoria.png"},
+{nome:"Hector",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Príncipe de Troia",saga:"Troy",imagemTentativa:"imagens/hector.png",imagemVitoria:"imagens/hector-vitoria.png"},
+{nome:"Ajax",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Grande Guerreiro",saga:"Troy",imagemTentativa:"imagens/ájax.png",imagemVitoria:"imagens/ájax-vitoria.png"},
+
+// ===== TRIPULAÇÃO =====
+{nome:"Polites",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Marinheiro, otimista",saga:"Troy",imagemTentativa:"imagens/polites.png",imagemVitoria:"imagens/polites-vitoria.png"},
+{nome:"Eurylochus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Segundo comandante",saga:"Troy",imagemTentativa:"imagens/eurylochus.png",imagemVitoria:"imagens/eurylochus-vitoria.png"},
+{nome:"Elpenor",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Marinheiro azarado",saga:"Ocean",imagemTentativa:"imagens/elpenor.png",imagemVitoria:"imagens/elpenor-vitoria.png"},
+{nome:"Perimedes",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Guerreiro de Ítaca",saga:"Ocean",imagemTentativa:"imagens/perimedes.png",imagemVitoria:"imagens/perimedes-vitoria.png"},
+
+// ===== DEUSES =====
+{nome:"Athena",status:"vivo",especie:"deus",genero:"feminino",pseudonimo:"Deusa da Sabedoria",saga:"Troy",imagemTentativa:"imagens/athena.png",imagemVitoria:"imagens/athena-vitoria.png"},
+{nome:"Poseidon",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus do Mar",saga:"Ocean",imagemTentativa:"imagens/poseidon.png",imagemVitoria:"imagens/poseidon-vitoria.png"},
+{nome:"Zeus",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Rei dos Deuses",saga:"Troy",imagemTentativa:"imagens/zeus.png",imagemVitoria:"imagens/zeus-vitoria.png"},
+{nome:"Hermes",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Mensageiro",saga:"Circe",imagemTentativa:"imagens/hermes.png",imagemVitoria:"imagens/hermes-vitoria.png"},
+{nome:"Aeolus",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Senhor dos Ventos",saga:"Ocean",imagemTentativa:"imagens/aeolus.png",imagemVitoria:"imagens/aeolus-vitoria.png"},
+{nome:"Apollo",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus do Sol",saga:"Wisdom",imagemTentativa:"imagens/apolo.png",imagemVitoria:"imagens/apolo-vitoria.png"},
+{nome:"Ares",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus da Guerra",saga:"Wisdom",imagemTentativa:"imagens/ares.png",imagemVitoria:"imagens/ares-vitoria.png"},
+{nome:"Hephaestus",status:"vivo",especie:"deus",genero:"masculino",pseudonimo:"Deus da Forja",saga:"Wisdom",imagemTentativa:"imagens/hefesto.png",imagemVitoria:"imagens/hefesto-vitoria.png"},
+{nome:"Aphrodite",status:"vivo",especie:"deus",genero:"feminino",pseudonimo:"Deusa do Amor",saga:"Wisdom",imagemTentativa:"imagens/afrodite.png",imagemVitoria:"imagens/afrodite-vitoria.png"},
+{nome:"Hera",status:"vivo",especie:"deus",genero:"feminino",pseudonimo:"Deusa do Casamento",saga:"Wisdom",imagemTentativa:"imagens/hera.png",imagemVitoria:"imagens/hera-vitoria.png"},
+{nome:"Circe",status:"vivo",especie:"deus",genero:"feminino",pseudonimo:"Feiticeira",saga:"Circe",imagemTentativa:"imagens/circe.png",imagemVitoria:"imagens/circe-vitoria.png"},
+{nome:"Calypso",status:"vivo",especie:"deus",genero:"feminino",pseudonimo:"Ninfa",saga:"Wisdom",imagemTentativa:"imagens/calypso.png",imagemVitoria:"imagens/calypso-vitoria.png"},
+
+// ===== MONSTROS =====
+{nome:"Polyphemus",status:"vivo",especie:"monstro",genero:"masculino",pseudonimo:"Ciclope",saga:"Cyclops",imagemTentativa:"imagens/polyphemus.png",imagemVitoria:"imagens/polyphemus-vitoria.png"},
+{nome:"Scylla",status:"vivo",especie:"monstro",genero:"feminino",pseudonimo:"Monstro Marinho",saga:"Thunder",imagemTentativa:"imagens/scylla.png",imagemVitoria:"imagens/scylla-vitoria.png"},
+{nome:"Charybdis",status:"vivo",especie:"monstro",genero:"feminino",pseudonimo:"Redemoinho Vivo",saga:"Thunder",imagemTentativa:"imagens/charybdis.png",imagemVitoria:"imagens/charybdis-vitoria.png"},
+{nome:"Sirens",status:"vivo",especie:"monstro",genero:"feminino",pseudonimo:"Cantoras do Mar",saga:"Ocean",imagemTentativa:"imagens/sirens.png",imagemVitoria:"imagens/sirens-vitoria.png"},
+{nome:"Laestrygonians",status:"vivo",especie:"monstro",genero:"indefinido",pseudonimo:"Gigantes",saga:"Ocean",imagemTentativa:"imagens/laestrygonians.png",imagemVitoria:"imagens/laestrygonians-vitoria.png"},
+{nome:"Lotus Eaters",status:"vivo",especie:"monstro",genero:"indefinido",pseudonimo:"Comedores de Lótus",saga:"Ocean",imagemTentativa:"imagens/winions.png",imagemVitoria:"imagens/winions-vitoria.png"},
+
+// ===== OUTROS =====
+{nome:"Tiresias",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Profeta",saga:"Underworld",imagemTentativa:"imagens/tiresias.png",imagemVitoria:"imagens/tiresias-vitoria.png"},
+{nome:"Anticlea",status:"morto",especie:"humano",genero:"feminino",pseudonimo:"Mãe de Odysseus",saga:"Underworld",imagemTentativa:"imagens/anticlea.png",imagemVitoria:"imagens/anticlea-vitoria.png"},
+
+// ===== ÍTACA =====
+{nome:"Penelope",status:"vivo",especie:"humano",genero:"feminino",pseudonimo:"Rainha",saga:"Ithaca",imagemTentativa:"imagens/penelope.png",imagemVitoria:"imagens/penelope-vitoria.png"},
+{nome:"Telemachus",status:"vivo",especie:"humano",genero:"masculino",pseudonimo:"Príncipe",saga:"Wisdom",imagemTentativa:"imagens/telemachus.png",imagemVitoria:"imagens/telemachus-vitoria.png"},
+{nome:"Argos",status:"vivo",especie:"animal",genero:"masculino",pseudonimo:"Cachorro fiel",saga:"Ithaca",imagemTentativa:"imagens/argos.png",imagemVitoria:"imagens/argos-vitoria.png"},
+{nome:"Antinous",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Pretendente",saga:"Ithaca",imagemTentativa:"imagens/antinous.png",imagemVitoria:"imagens/antinous-vitoria.png"},
+{nome:"Eurymachus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Pretendente",saga:"Ithaca",imagemTentativa:"imagens/eurymachus.png",imagemVitoria:"imagens/eurymachus-vitoria.png"},
+{nome:"Amphinomus",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Pretendente",saga:"Ithaca",imagemTentativa:"imagens/amphinomus.png",imagemVitoria:"imagens/amphinomus-vitoria.png"},
+
+// ===== FINAL =====
+{nome:"Astyanax",status:"morto",especie:"humano",genero:"masculino",pseudonimo:"Príncipe de Troia",saga:"Troy",imagemTentativa:"imagens/scamandrius.png",imagemVitoria:"imagens/scamandrius-vitoria.png"},
+
+]
 // ================= ORDEM ALFABÉTICA =================
 personagens.sort((a,b)=>
 a.nome.localeCompare(b.nome, "pt", {sensitivity:"base"})
